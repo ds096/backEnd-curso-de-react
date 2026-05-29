@@ -1,16 +1,17 @@
 import express from "express";
 
 const app = express();
+app.use(express.json());
 
 const tasks = [];
 
 app.post("/", (req, res) => {
-  console.log(req);
-  res.send("Aqui deu certo");
+  tasks.push(req.body);
+  res.status(201).json(req.body);
 });
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.status(200).json(tasks);
 });
 
 app.listen(3000);
