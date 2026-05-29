@@ -18,7 +18,7 @@ model Task {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   title       String
   description String
-  completed   Boolean  @default(false)
+  isCompleted   Boolean  @default(false)
 }
 
 model Post { 
