@@ -1,4 +1,5 @@
 import express from "express";
+import prisma from "./lib/prisma.ts";
 
 const app = express();
 app.use(express.json());
