@@ -1,15 +1,27 @@
 {
   "name": "backend-curso-de-react",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "backEnd connecting curso-de-reacto to MongoDB using express and Prisma",
   "keywords": [],
-  "author": "",
+  "homepage": "https://github.com/ds096/backEnd-curso-de-react#readme",
+  "bugs": {
+    "url": "https://github.com/ds096/backEnd-curso-de-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ds096/backEnd-curso-de-react.git"
+  },
   "license": "ISC",
+  "author": "Daniel S. - ds096",
   "type": "module",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
   "dependencies": {
     "@prisma/client": "6.19",
     "dotenv": "^17.4.2",
@@ -19,7 +31,7 @@
   "devDependencies": {
     "@types/node": "^25.9.1",
     "prisma": "6.19",
-    "tsx": "^4.22.3",
+    "tsx": "^4.22.4",
     "typescript": "^6.0.3"
   }
 }

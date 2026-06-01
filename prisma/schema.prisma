@@ -21,10 +21,3 @@ model Task {
   isCompleted   Boolean  @default(false)
 }
 
-model Post { 
-  id        String  @id @default(auto()) @map("_id") @db.ObjectId
-  title     String
-  description String?
-  completed   Boolean  @default(false)
-  published Boolean @default(false) 
-} 
