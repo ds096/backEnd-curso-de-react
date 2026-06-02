@@ -33,7 +33,17 @@ app.put("/:id", async (req, res) => {
 });
 
 app.get("/", async (req, res) => {
-  const tasks = await prisma.task.findMany();
+  let tasks = [];
+  if (req.query) {
+    tasks = await prisma.task.findMany({
+      where: {
+        title: req.query.title,
+      },
+    });
+  } else {
+    tasks = await prisma.task.findMany();
+  }
+
   res.status(200).json(tasks);
 });
 
