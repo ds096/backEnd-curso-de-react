@@ -10,45 +10,40 @@ app.use(cors());
 
 // CREATE TASK
 app.post("/", async (req, res) => {
-  await prisma.task.create({
+  const task = await prisma.task.create({
     data: {
       title: req.body.title,
       description: req.body.description,
       completed: req.body.completed,
     },
   });
-  res.status(201).json(req.body);
+
+  res.status(201).json(task);
 });
 
-// UPDATE TASK
+// UPDATE TASK COMPLETED
 app.put("/:id", async (req, res) => {
-  console.log(req);
-  await prisma.task.update({
+  const task = await prisma.task.findUnique({
+    where: {
+      id: req.params.id,
+    },
+  });
+
+  const updatedTask = await prisma.task.update({
     where: {
       id: req.params.id,
     },
     data: {
-      title: req.body.title,
-      description: req.body.description,
-      completed: req.body.completed,
+      completed: !task.completed,
     },
   });
 
-  res.status(200).json(req.body);
+  res.status(200).json(updatedTask);
 });
 
 // GET TASKS
 app.get("/", async (req, res) => {
-  let tasks = [];
-  if (req.query) {
-    tasks = await prisma.task.findMany({
-      where: {
-        title: req.query.title,
-      },
-    });
-  } else {
-    tasks = await prisma.task.findMany();
-  }
+  const tasks = await prisma.task.findMany();
 
   res.status(200).json(tasks);
 });
