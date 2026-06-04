@@ -20,6 +20,22 @@ app.post("/", async (req, res) => {
 
   res.status(201).json(task);
 });
+//UPDATE TASK
+app.put("/edit-task/:id", async (req, res) => {
+  const task = await prisma.task.findUnique({
+    where: {
+      id: req.params.id,
+    },
+  });
+
+  const updatedTask = await prisma.task.update({
+    where: {
+      id: req.params.id,
+    },
+    data: { title: req.body.title, description: req.body.description },
+  });
+  res.status(200).json(updatedTask);
+});
 
 // UPDATE TASK COMPLETED
 app.put("/:id", async (req, res) => {
